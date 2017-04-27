@@ -30,7 +30,7 @@ class Skynet extends Actor {
   }
 }
 
-class Root extends Actor {
+class RootActor extends Actor {
   import Root._
 
   override def receive = {
@@ -39,7 +39,7 @@ class Root extends Actor {
 
   def startRun(n: Int): Unit = {
     val start = System.nanoTime()
-    context.actorOf(Skynet.props) ! Skynet.Start(7, 0)
+    context.actorOf(Skynet.props) ! Skynet.Start(6/*7*/, 0)
     context.become(waiting(n - 1, start))
   }
 
@@ -50,10 +50,4 @@ class Root extends Actor {
       if (n == 0) context.system.terminate()
       else startRun(n)
   }
-}
-
-object Root extends App {
-  case class Run(num: Int)
-
-  ActorSystem("main").actorOf(Props[Root]) ! Run(3)
 }

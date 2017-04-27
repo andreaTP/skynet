@@ -1,7 +1,8 @@
 dnx/bin/*
 dnx/obj/*
 scala/project/target/*
-scala/target/*
+scala/js/target/*
+cala/jvm/target/*
 erlang/skynet.beam
 dotnet-full/bin/*
 dotnet-full/obj/*
